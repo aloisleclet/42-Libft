@@ -6,59 +6,60 @@
 /*   By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 16:13:55 by aleclet           #+#    #+#             */
-/*   Updated: 2016/12/01 13:32:02 by aleclet          ###   ########.fr       */
+/*   Updated: 2016/12/09 17:58:51 by aleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**ft_gen_res(t_split vars)
+static char	**init_split(char *s, char c, int nb_word, char **res)
 {
-	vars.i = 0;
-	vars.j = 0;
-	vars.word = 0;
-	while (vars.word < vars.n)
+	int		is_word;
+	int		nb_char;
+	char	**result;
+	is_word = 0;
+	nb_char = 0;
+	if (nb_word != -1)
+		result = (char**)(malloc(sizeof(char*) * nb_word));
+	else
+		nb_word = 0;
+
+	while (*s)
 	{
-		vars.j = 0;
-		while (vars.s[vars.i] == vars.c && vars.s[vars.i])
-			vars.i++;
-		while (vars.s[vars.i] != vars.c && vars.s[vars.i])
+		nb_char = 0;
+		while (*s == c && *s)
 		{
-			vars.res[vars.word][vars.j] = vars.s[vars.i];
-			vars.j++;
-			vars.i++;
+			is_word = 0;
+			s++;
 		}
-		vars.res[vars.word][vars.j] = '\0';
-		vars.word++;
-		vars.i++;
+		while (*s != c && *s)
+		{
+			is_word = 1;
+			s++;
+			nb_char++;
+		}
+		if (is_word)
+		{
+			if (nb_word != -1)
+			{
+				printf("%d\n", nb_word);
+				result[nb_word] = (char*)(malloc(sizeof(char) * nb_char));
+			}	
+			nb_word++;
+		}
 	}
-	return (vars.res);
+	printf("nb_word : %d\n", nb_word);
+	return (result == (void*)(0)) ? init_split(s, c, nb_word, res) : result;
 }
 
-char		**ft_strsplit(char const *s, char c)
+char		**ft_strsplit(const char *s, char c)
 {
-	t_split vars;
+	char	**res;
+	int		nb_word;
 
-	vars.s = s;
-	vars.i = 0;
-	vars.j = 0;
-	vars.c = c;
-	vars.word = ft_str_count_word(vars.s, vars.c);
-	vars.res = (char**)(malloc(sizeof(char*) * vars.word));
-	vars.n = vars.word;
-	vars.word = 0;
-	while (vars.s[vars.i])
-	{
-		vars.j = 0;
-		while (vars.s[vars.i] == vars.c && vars.s[vars.i])
-			vars.i++;
-		while (vars.s[vars.i] != vars.c && vars.s[vars.i])
-		{
-			vars.j++;
-			vars.i++;
-		}
-		vars.res[vars.word] = (char*)(malloc(sizeof(char) * (vars.j + 1)));
-		vars.word++;
-	}
-	return (ft_gen_res(vars));
+	res = (void*)(0);
+	nb_word = -1;
+	res = (void*)(0);
+	init_split((char*)s, c, nb_word, res);
+	return (0);
 }
