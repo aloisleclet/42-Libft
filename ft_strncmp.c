@@ -6,7 +6,7 @@
 /*   By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/26 07:47:21 by aleclet           #+#    #+#             */
-/*   Updated: 2016/12/08 12:00:57 by aleclet          ###   ########.fr       */
+/*   Updated: 2016/12/13 17:20:24 by aleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n)
 	int		res;
 
 	i = 0;
-	res = (ft_strlen(s1) == 0) ? -1 :  1;
+	res = (ft_strlen(s1) == 0) ? -1 : 1;
 	while (s1[i] && s2[i] && s1[i] == s2[i] && i < (n - 1))
 	{
 		i++;

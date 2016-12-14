@@ -6,7 +6,7 @@
 /*   By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/26 07:57:18 by aleclet           #+#    #+#             */
-/*   Updated: 2016/12/01 13:22:01 by aleclet          ###   ########.fr       */
+/*   Updated: 2016/12/12 15:34:43 by aleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t len)
 {
-	size_t		i;
-	const void	*source;
-	void		*destination;
+	unsigned char	*source;
+	unsigned char	*destination;
 
-	i = 0;
-	source = src;
-	destination = dest;
-	while (i < len)
+	source = (unsigned char*)src;
+	destination = (unsigned char*)dest;
+	while ((int)(--len) >= 0)
 	{
-		*((char*)destination + i) = *((char*)source + (i));
-		i++;
+		if (source < destination)
+			*(destination + len) = *(source + len);
+		else
+			*(destination++) = *(source++);
 	}
 	dest = destination;
 	return (dest);

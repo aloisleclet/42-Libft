@@ -6,7 +6,7 @@
 /*   By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/26 08:12:13 by aleclet           #+#    #+#             */
-/*   Updated: 2016/12/06 17:28:25 by aleclet          ###   ########.fr       */
+/*   Updated: 2016/12/13 08:08:52 by aleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ char	*ft_strncpy(char *dst, const char *src, size_t len)
 		*(dst + i) = '\0';
 		i++;
 	}
-	return (ft_strcmp(src, "")) ? dst : src;
+	return (ft_strcmp(src, "")) ? dst : (char*)src;
 }

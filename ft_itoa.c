@@ -6,53 +6,61 @@
 /*   By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 11:04:48 by aleclet           #+#    #+#             */
-/*   Updated: 2016/12/01 13:19:57 by aleclet          ###   ########.fr       */
+/*   Updated: 2016/12/13 17:14:43 by aleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static t_itoa	ft_init_res(t_itoa vars)
+static char		*ft_alloc_itoa(int i)
 {
-	while (vars.k < vars.i)
-	{
-		vars.j++;
-		vars.k = ft_pow(10, vars.j);
-	}
-	vars.res = (char*)(malloc(sizeof(char) * vars.j + 1 + (vars.i < 0)));
-	return (vars);
-}
+	char	*res;
+	int		j;
+	int		is_negative;
 
-static char		*ft_itoa_process(t_itoa vars)
-{
-	vars.res[0] = vars.is_negative ? '-' : 0;
-	vars.j--;
-	vars.k = 0;
-	while (vars.j > -1)
+	res = (void*)(0);
+	j = 0;
+	is_negative = (i < 0);
+	while (ft_pow(10, j) < i)
 	{
-		vars.k = vars.i / ft_pow(10, vars.j);
-		while (vars.k > 10)
-			vars.k %= 10;
-		vars.res[vars.l] = vars.k + 48;
-		vars.l++;
-		vars.j--;
+		j++;
+		ft_pow(10, j);
 	}
-	vars.res[vars.l] = '\0';
-	return (vars.res);
+	if (j == 0)
+		j++;
+	res = (char*)(malloc(sizeof(char) * j + 1 + is_negative));
+	if (!res)
+		res = (void*)(0);
+	return (res);
 }
 
 char			*ft_itoa(int i)
 {
-	t_itoa	vars;
 	char	*res;
+	int		d;
+	int		j;
+	int		is_negative;
 
-	vars.j = 0;
-	vars.k = 0;
-	vars.l = (i < 0);
-	vars.is_negative = (i < 0);
-	vars.res = (void*)(0);
-	vars.i = (i < 0) ? i * (-1) : i;
-	vars = ft_init_res(vars);
-	res = ft_itoa_process(vars);
-	return (res);
+	res = ft_alloc_itoa(i);
+	j = 0;
+	is_negative = 0;
+	if (i == 0 || i == -0)
+		return ("0");
+	if (i < 0)
+	{
+		is_negative = 1;
+		i *= -1;
+	}
+	while (i != 0)
+	{
+		d = i % 10;
+		*(res + j) = (d > 9) ? (d - 10) + 'a' : d + '0';
+		i = i / 10;
+		j++;
+	}
+	if (is_negative)
+		*(res + j) = '-';
+	j++;
+	*(res + j) = '\0';
+	return (ft_strrev(res));
 }

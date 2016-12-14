@@ -6,7 +6,7 @@
 /*   By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/26 09:29:19 by aleclet           #+#    #+#             */
-/*   Updated: 2016/12/08 16:42:27 by aleclet          ###   ########.fr       */
+/*   Updated: 2016/12/13 14:29:04 by aleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,6 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
-
-typedef struct	s_itoa {
-	int		i;
-	int		j;
-	int		k;
-	int		l;
-	int		is_negative;
-	char	*res;
-}				t_itoa;
-
-typedef struct	s_split {
-	int			i;
-	int			j;
-	int			n;
-	int			word;
-	char		c;
-	const char	*s;
-	char		**res;
-}				t_split;
 
 typedef struct	s_list
 {
@@ -104,6 +85,7 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 
 int		ft_pow(int nb, int p);
+char	*ft_strrev(char *s);
 int		ft_str_count_word(char const *s, char c);
 int		ft_tab_str_cmp(char **tab1, char **tab2, size_t size);
 int		ft_is_white_space(char c);

@@ -6,7 +6,7 @@
 #    By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/26 11:24:47 by aleclet           #+#    #+#              #
-#    Updated: 2016/12/08 16:42:16 by aleclet          ###   ########.fr        #
+#    Updated: 2016/12/13 16:22:02 by aleclet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror -I $(INC)
 
 OBJS = ft_memset.o\
+	ft_isdigit.o\
 	ft_memcpy.o\
 	ft_memccpy.o\
 	ft_memmove.o\
@@ -24,10 +25,10 @@ OBJS = ft_memset.o\
 	ft_strlen.o\
 	ft_strdup.o\
 	ft_strcpy.o\
+	ft_strlcat.o\
 	ft_strncpy.o\
 	ft_strcat.o\
 	ft_strncat.o\
-	ft_strlcat.o\
 	ft_strchr.o\
 	ft_strrchr.o\
 	ft_strstr.o\
@@ -35,7 +36,6 @@ OBJS = ft_memset.o\
 	ft_strcmp.o\
 	ft_strncmp.o\
 	ft_isalpha.o\
-	ft_isdigit.o\
 	ft_isalnum.o\
 	ft_isascii.o\
 	ft_isprint.o\
@@ -52,6 +52,7 @@ OBJS = ft_memset.o\
 	ft_strmapi.o\
 	ft_strequ.o\
 	ft_strnequ.o\
+	ft_strrev.o\
 	ft_strsub.o\
 	ft_strjoin.o\
 	ft_strtrim.o\

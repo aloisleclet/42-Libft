@@ -6,7 +6,7 @@
 /*   By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/26 07:41:00 by aleclet           #+#    #+#             */
-/*   Updated: 2016/12/08 11:25:08 by aleclet          ###   ########.fr       */
+/*   Updated: 2016/12/13 17:38:53 by aleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ char	*ft_strstr(const char *big, const char *little)
 			big++;
 			little++;
 			i++;
-			printf("i : %zu, %c - %c \n", i, *big, *little);
 		}
 		if (i == size)
 			return (char*)(big - size);
