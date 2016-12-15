@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_is_white_space.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 10:08:14 by aleclet           #+#    #+#             */
-/*   Updated: 2016/12/15 15:11:35 by aleclet          ###   ########.fr       */
+/*   Created: 2016/11/24 13:31:54 by aleclet           #+#    #+#             */
+/*   Updated: 2016/12/14 09:17:10 by aleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+int		ft_isspace(char c)
 {
-	unsigned int	i;
-	char			*res;
-
-	if (!s)
-		return ((void*)(0));
-	i = 0;
-	while (s[i])
-		i++;
-	res = (char*)(malloc(sizeof(char) * (i + 1)));
-	if (res != (void*)(0))
-	{
-		res[i] = '\0';
-		while ((int)--i >= 0)
-		{
-			res[i] = f(i, (char)s[i]);
-		}
-	}
-	return (res);
+	return (c == ' '\
+			|| c == '\t'\
+			|| c == '\n'\
+			|| c == '\v'\
+			|| c == '\f'\
+			|| c == '\r');
 }

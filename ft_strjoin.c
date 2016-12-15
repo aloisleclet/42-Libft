@@ -6,7 +6,7 @@
 /*   By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 12:06:55 by aleclet           #+#    #+#             */
-/*   Updated: 2016/12/09 12:11:04 by aleclet          ###   ########.fr       */
+/*   Updated: 2016/12/15 15:20:57 by aleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
+	if (!s1 || !s2)
+		return ((void*)(0));
 	res = (char*)(malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2))));
 	if (res != (void*)(0))
 	{

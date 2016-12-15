@@ -6,7 +6,7 @@
 /*   By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 13:24:42 by aleclet           #+#    #+#             */
-/*   Updated: 2016/12/13 17:47:11 by aleclet          ###   ########.fr       */
+/*   Updated: 2016/12/15 14:34:16 by aleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ char	*ft_strtrim(char const *s)
 	i = size - 1;
 	j = 0;
 	res = (void*)(0);
-
-	while (ft_is_white_space((char)s[i]))
+	while (ft_isspace((char)s[i]))
 	{
 		i--;
 		size--;
@@ -32,7 +31,7 @@ char	*ft_strtrim(char const *s)
 	if (size == 0)
 		return ("");
 	i = 0;
-	while (ft_is_white_space((char)s[i]))
+	while (ft_isspace((char)s[i]))
 	{
 		i++;
 		size--;

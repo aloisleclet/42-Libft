@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_str_count_word.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 10:08:14 by aleclet           #+#    #+#             */
-/*   Updated: 2016/12/15 15:11:35 by aleclet          ###   ########.fr       */
+/*   Created: 2016/11/24 17:30:20 by aleclet           #+#    #+#             */
+/*   Updated: 2016/12/14 09:16:41 by aleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+int		ft_strcountword(char const *s, char c)
 {
-	unsigned int	i;
-	char			*res;
+	int		i;
+	int		word;
+	int		is_char;
 
-	if (!s)
-		return ((void*)(0));
 	i = 0;
+	word = 0;
+	is_char = 0;
 	while (s[i])
-		i++;
-	res = (char*)(malloc(sizeof(char) * (i + 1)));
-	if (res != (void*)(0))
 	{
-		res[i] = '\0';
-		while ((int)--i >= 0)
+		is_char = 0;
+		while (s[i] == c && s[i])
 		{
-			res[i] = f(i, (char)s[i]);
+			i++;
+		}
+		while (s[i] != c && s[i])
+		{
+			is_char = 1;
+			i++;
+		}
+		if (is_char)
+		{
+			word++;
 		}
 	}
-	return (res);
+	return (word);
 }

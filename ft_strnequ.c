@@ -6,7 +6,7 @@
 /*   By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 10:31:08 by aleclet           #+#    #+#             */
-/*   Updated: 2016/12/01 13:31:15 by aleclet          ###   ########.fr       */
+/*   Updated: 2016/12/15 15:18:37 by aleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int		ft_strnequ(char const *s1, char const *s2, size_t n)
 	size_t	i;
 
 	i = 0;
+	if (!s1 || !s2)
+		return (0);
 	while ((i < n) && *(s1 + i) == *(s2 + i))
 	{
 		i++;
