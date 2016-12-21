@@ -6,7 +6,7 @@
 /*   By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 15:23:06 by aleclet           #+#    #+#             */
-/*   Updated: 2016/12/21 17:40:03 by aleclet          ###   ########.fr       */
+/*   Updated: 2016/12/21 17:55:59 by aleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ t_list				*ft_lstnew(void const *content, size_t content_size);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 int					ft_pow(int nb, int p);
-void				ft_swap(char *a, char *b);
 void				ft_strrev(char **s);
 int					ft_strcountword(char const *s, char c);
 int					ft_isspace(char c);
