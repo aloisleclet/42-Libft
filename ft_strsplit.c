@@ -6,49 +6,67 @@
 /*   By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 16:13:55 by aleclet           #+#    #+#             */
-/*   Updated: 2016/12/15 14:36:20 by aleclet          ###   ########.fr       */
+/*   Updated: 2016/12/18 08:27:00 by aleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		**ft_strsplit(const char *s, char c)
+static size_t	ft_createtab(size_t *size, char ***array)
 {
-	char	**res;
-	int		i;
-	int		j;
-	int		k;
-	int		nb_char;
-	char	*str;
-
-	i = 0;
-	j = 0;
-	k = 0;
-	nb_char = 0;
-	str = (char*)s;
-	res = (char**)(malloc(sizeof(char*) * ft_strcountword((char*)str, c)));
-	while (i < ft_strcountword(str, c))
-	{
-		while (*(str + j) == c && *(str + j))
-			j++;
-		while (*(str + j) != c && *(str + j))
-		{
-			nb_char++;
-			j++;
-		}
-		res[i] = (char*)(malloc(sizeof(char) * nb_char));
-		j -= nb_char;
-		while (k < nb_char)
-		{
-			res[i][k] = s[j];
-			k++;
-			j++;
-		}
-		i++;
-		k = 0;
-		nb_char = 0;
-	}
-	res[i] = (void*)(0);
-	return (res);
+	if (!(*array = (char **)malloc(sizeof(char *) * (*size + 1))))
+		return (0);
+	return (1);
 }
 
+static size_t	ft_filltab(char **str, char *c, char ***array)
+{
+	size_t	size;
+
+	size = 0;
+	while (**str == *c && **str)
+		*str += 1;
+	while (**str != *c && **str)
+	{
+		*str += 1;
+		size += 1;
+	}
+	if (!(**array = (char *)malloc(sizeof(char) * (size + 1))))
+		return (0);
+	*str -= size;
+	while (**str != *c && **str)
+	{
+		***array = **str;
+		**array += 1;
+		*str += 1;
+	}
+	***array = '\0';
+	**array -= size;
+	return (1);
+}
+
+char			**ft_strsplit(const char *s, char c)
+{
+	size_t		size;
+	char		**array;
+	char		*str;
+	size_t		i;
+
+	if (!s)
+		return (NULL);
+	str = (char *)s;
+	size = ft_strcountword(s, c);
+	if (!(ft_createtab(&size, &array)))
+		return (NULL);
+	str = (char *)s;
+	i = size;
+	while (i--)
+	{
+		if (!(ft_filltab(&str, &c, &array)))
+			return ((void*)(0));
+		array++;
+	}
+	*array = (void*)(0);
+	array -= size;
+	return (array);
+}

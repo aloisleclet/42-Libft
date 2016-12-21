@@ -6,7 +6,7 @@
 /*   By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 09:55:10 by aleclet           #+#    #+#             */
-/*   Updated: 2016/12/15 15:01:17 by aleclet          ###   ########.fr       */
+/*   Updated: 2016/12/21 16:11:58 by aleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	char	*res;
 
 	if (!s)
-		return ((void*)(0));	
+		return ((void*)(0));
 	i = ft_strlen(s);
 	res = (char*)(malloc(sizeof(char) * (i + 1)));
 	if (res != (void*)(0))

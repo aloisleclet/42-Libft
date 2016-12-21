@@ -6,36 +6,60 @@
 /*   By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 11:04:48 by aleclet           #+#    #+#             */
-/*   Updated: 2016/12/15 14:33:36 by aleclet          ###   ########.fr       */
+/*   Updated: 2016/12/20 16:46:43 by aleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			*ft_itoa(int i)
+static long int	ft_check(int n, int *neg)
 {
-	char	*res;
-	int		is_negative;
-	int		j;
-	int		k;
+	long int	nb;
 
-	if (i == -2147483648)
-		return (ft_strdup("-2147483648"));
-	j = 0;
-	is_negative = (i < 0) ? 1 : 0;
-	i = (i < 0) ? i * (-1) : i;
-	k = i;
-	while (k /= 10)
-		j++;
-	if (!(res = ft_strnew(j + is_negative + (k == 0))))
-		return ((void*)(0));
-	j = 0;
-	while (i != 0)
+	nb = (long int)n;
+	if (n < 0)
 	{
-		*(res + (k++)) = (char)((i % 10) + 48);
-		i /= 10;
+		*neg = 1;
+		return (-nb);
 	}
-	if (is_negative == 1)
-		*(res + k) = '-';
-	return (k == 0 ? "0" : ft_strrev(res));
+	*neg = 0;
+	return (nb);
+}
+
+static int		ft_sizeitoa(long int nb)
+{
+	int	len;
+
+	len = 0;
+	if (nb == 0)
+		return (1);
+	while (nb)
+	{
+		nb /= 10;
+		len++;
+	}
+	return (len);
+}
+
+char			*ft_itoa(int n)
+{
+	int			i;
+	long int	nb;
+	int			neg;
+	char		*res;
+
+	nb = ft_check(n, &neg);
+	i = ft_sizeitoa(nb) + neg;
+	if (!(res = (char *)malloc(sizeof(char) * (i + 1))))
+		return ((void*)(0));
+	res[0] = (neg == 1) ? '-' : res[0];
+	res[0] = (nb == 0) ? '0' : res[0];
+	res[i] = '\0';
+	while (nb)
+	{
+		res[i - 1] = nb % 10 + 48;
+		nb /= 10;
+		i--;
+	}
+	return (res);
 }

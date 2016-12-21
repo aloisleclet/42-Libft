@@ -6,7 +6,7 @@
 /*   By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 11:48:25 by aleclet           #+#    #+#             */
-/*   Updated: 2016/12/03 14:02:44 by aleclet          ###   ########.fr       */
+/*   Updated: 2016/12/21 15:21:19 by aleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,18 @@
 
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list	*current;
-	t_list	*res_lst;
-	int		i;
+	t_list		*tmp;
+	t_list		*res;
 
-	i = 0;
-	current = lst;
-	res_lst = ft_lstnew(current->content, current->content_size);
-	while (current->next != (void*)(0))
+	if (!lst || !f)
+		return ((void*)(0));
+	res = (*f)(lst);
+	tmp = res;
+	while (lst->next)
 	{
-		i++;
-		ft_lstadd(&res_lst, f(current));
-		current = current->next;
-//		printf("%d\n", i);
+		lst = lst->next;
+		tmp->next = (*f)(lst);
+		tmp = tmp->next;
 	}
-	return (res_lst);
-}	
+	return (res);
+}

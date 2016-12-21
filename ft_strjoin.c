@@ -6,7 +6,7 @@
 /*   By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 12:06:55 by aleclet           #+#    #+#             */
-/*   Updated: 2016/12/15 15:20:57 by aleclet          ###   ########.fr       */
+/*   Updated: 2016/12/21 16:11:28 by aleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	{
 		while (*(s1 + j))
 		{
-			*(res + i) = *(s1 + j);
-			i++;
+			*(res + (i++)) = *(s1 + j);
 			j++;
 		}
 		j = 0;
 		while (*(s2 + j))
 		{
-			*(res + i) = *(s2 + j);
-			i++;
+			*(res + (i++)) = *(s2 + j);
 			j++;
 		}
 		*(res + i) = '\0';

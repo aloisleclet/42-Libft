@@ -6,7 +6,7 @@
 /*   By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/26 07:57:18 by aleclet           #+#    #+#             */
-/*   Updated: 2016/12/12 15:34:43 by aleclet          ###   ########.fr       */
+/*   Updated: 2016/12/16 10:33:16 by aleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@ void	*ft_memmove(void *dest, const void *src, size_t len)
 		else
 			*(destination++) = *(source++);
 	}
-	dest = destination;
 	return (dest);
 }

@@ -6,46 +6,52 @@
 /*   By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 13:24:42 by aleclet           #+#    #+#             */
-/*   Updated: 2016/12/15 14:34:16 by aleclet          ###   ########.fr       */
+/*   Updated: 2016/12/20 15:13:04 by aleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s)
+static size_t	ft_size(char *str)
 {
-	size_t	i;
-	size_t	j;
-	size_t	size;
+	int		len;
+
+	len = 0;
+	while (ft_isspace(*str))
+		str++;
+	while (*(str))
+	{
+		len++;
+		str++;
+	}
+	if (len)
+		str--;
+	while (ft_isspace(*str))
+	{
+		len--;
+		str--;
+	}
+	return (len);
+}
+
+char			*ft_strtrim(char const *s)
+{
+	char	*str;
+	int		len;
+	int		tmp;
 	char	*res;
 
-	size = ft_strlen((char*)s);
-	i = size - 1;
-	j = 0;
-	res = (void*)(0);
-	while (ft_isspace((char)s[i]))
-	{
-		i--;
-		size--;
-	}
-	if (size == 0)
-		return ("");
-	i = 0;
-	while (ft_isspace((char)s[i]))
-	{
-		i++;
-		size--;
-	}
-	res = (char*)(malloc(size + 1));
-	if (res != (void*)(0))
-	{
-		j = 0;
-		while (j < size)
-		{
-			res[j] = (char)s[(i + j)];
-			j++;
-		}
-		res[j] = '\0';
-	}
-	return (res);
+	if (!s)
+		return ((void*)(0));
+	str = (char *)s;
+	len = ft_size(str);
+	if (!(res = (char *)malloc(sizeof(char) * (len + 1))))
+		return ((void*)(0));
+	while (ft_isspace(*str))
+		str++;
+	tmp = len;
+	while (len--)
+		*(res++) = *(str++);
+	*res = '\0';
+	return (res - tmp);
 }

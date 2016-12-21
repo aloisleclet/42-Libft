@@ -6,7 +6,7 @@
 /*   By: aleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 12:07:49 by aleclet           #+#    #+#             */
-/*   Updated: 2016/12/15 14:52:26 by aleclet          ###   ########.fr       */
+/*   Updated: 2016/12/21 14:21:42 by aleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,8 @@
 
 void	ft_strdel(char **as)
 {
-	char	*p;
-
-	if (as)
-	{
-		p = *as;
-		while (*p)
-		{
-			free(p);
-			p++;
-		}
-		*as = (void*)(0);
-	}
+	if (as == (void*)(0))
+		return ;
+	free(*as);
+	*as = (void*)(0);
 }

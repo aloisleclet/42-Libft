@@ -6,7 +6,7 @@
 #    By: aleclet <aleclet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/15 15:22:43 by aleclet           #+#    #+#              #
-#    Updated: 2016/12/15 15:22:45 by aleclet          ###   ########.fr        #
+#    Updated: 2016/12/20 16:49:20 by aleclet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,9 @@ SRCS = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
        ft_strncat.c ft_strncmp.c ft_strncpy.c ft_strnequ.c ft_strnew.c \
        ft_strnstr.c ft_strrchr.c ft_strsplit.c ft_strstr.c ft_strsub.c \
        ft_strtrim.c ft_tolower.c ft_toupper.c \
-	   ft_pow.c ft_strrev.c ft_strcountword.c ft_isspace.c
+	   ft_pow.c ft_strrev.c ft_strcountword.c ft_isspace.c\
+	   ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c \
+	   ft_lstmap.c ft_lstiter.c
 OBJS = $(SRCS:.c=.o)
 HEAD = libft.h
 CC = gcc
